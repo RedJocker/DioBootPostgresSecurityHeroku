@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.tutorial.dio.cloudparking.model.Parking;
+import org.tutorial.dio.cloudparking.service.ParkingService;
 
 import java.util.List;
 
@@ -11,15 +12,16 @@ import java.util.List;
 @RequestMapping("/parking")
 public class ParkingController {
 
+
+    private final ParkingService parkingService;
+
+    public ParkingController(ParkingService parkingService) {
+        this.parkingService = parkingService;
+    }
+
     @GetMapping
     public List<Parking> findAll() {
-         var parking =  new Parking();
-         parking.setColor("PRETO");
-         parking.setLicense("MSS-1111");
-         parking.setModel("VW  GOL");
-         parking.setState("SP");
-
-         return List.of(parking, parking);
+        return parkingService.findAll();
 
     }
 }

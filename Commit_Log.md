@@ -29,6 +29,7 @@
         - java.runtime.version=11
     - link heroku app 
         - https://dio-boot-web-postgress-securit.herokuapp.com/hello
+    
 
 - parking resource
     - created model.Parking
@@ -36,5 +37,11 @@
         - 1 endpoint
             - GET listAll()
                 - hardcoded return for testing purposes
+    
+
+- parking service
+    - created service.ParkingService
+    - removed mock data from controller to service
+    - added contructon on model Parking
     
             
