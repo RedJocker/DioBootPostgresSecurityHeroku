@@ -24,5 +24,7 @@
     - CloudParkingApplicationTests
         - webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT
 
-
+- heroku initial configuration
+    - created system.properties
+        - java.runtime.version=11
             
