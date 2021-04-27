@@ -2,7 +2,8 @@
     - initialized a project with spring initializr
         - spring web
         - spring boot dev tools
-
+    
+    
 - fix live reload
     - created a HelloController
     - live reload was not working
@@ -14,5 +15,14 @@
             - edit compiler.automake.allow.when.app.running
         - installed plugin for live reload on firefox
         - activated plugin on the page
-    - live reload working
+    - live reload working  
+
+
+- defined ports
+    - application.properties
+        - server.port 8080
+    - CloudParkingApplicationTests
+        - webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT
+
+
             
