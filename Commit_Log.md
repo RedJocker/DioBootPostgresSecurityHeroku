@@ -27,4 +27,14 @@
 - heroku initial configuration
     - created system.properties
         - java.runtime.version=11
+    - link heroku app 
+        - https://dio-boot-web-postgress-securit.herokuapp.com/hello
+
+- parking resource
+    - created model.Parking
+    - created controller.Parking.Controller
+        - 1 endpoint
+            - GET listAll()
+                - hardcoded return for testing purposes
+    
             
