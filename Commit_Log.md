@@ -37,11 +37,21 @@
         - 1 endpoint
             - GET listAll()
                 - hardcoded return for testing purposes
+                - https://dio-boot-web-postgress-securit.herokuapp.com/parking
     
 
 - parking service
     - created service.ParkingService
     - removed mock data from controller to service
-    - added contructon on model Parking
-    
+    - added constructor on model Parking
+
+
+- parking dto
+    - created ParkingDTO
+    - chosen a different implementation to convert dto to entity from tutors implementation
+        - instead of adding a dependency and creating a class mapper I created conversion 
+          methods on the ParkingDTO class
+        - dependency implemented by tutor was org.modelmapper modelmapper 2.3.5
+    - filtered null values from response
+        - @JsonInclude(JsonInclude.Include.NON_NULL)
             
