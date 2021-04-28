@@ -35,4 +35,9 @@ public class ParkingService {
     }
 
 
+    public Optional<Parking> checkoutCarById(String carId) {
+        final Optional<Parking> maybeCarFound = findById(carId);
+        maybeCarFound.ifPresent(mockRepository::remove);
+        return maybeCarFound;
+    }
 }
