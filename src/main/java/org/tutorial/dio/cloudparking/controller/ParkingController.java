@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.tutorial.dio.cloudparking.controller.dto.ParkingPostRequestDTO;
 import org.tutorial.dio.cloudparking.controller.dto.ParkingResponseDTO;
+import org.tutorial.dio.cloudparking.exception.IdNotFoundException;
 import org.tutorial.dio.cloudparking.model.Parking;
 import org.tutorial.dio.cloudparking.service.ParkingService;
 
@@ -50,7 +51,7 @@ public class ParkingController {
         return parkingService.findById(id)
                 .map(ParkingResponseDTO::fromParking)
                 .map(ResponseEntity::ok)
-                .orElseThrow();
+                .orElseThrow(() -> new IdNotFoundException(id));
     }
 
     @PostMapping

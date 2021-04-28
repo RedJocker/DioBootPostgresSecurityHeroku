@@ -82,4 +82,12 @@
     - updated ParkingController
         - @Api(tags = "Parking Controller")
         - @ApiOperation("end point description")
+    
+
+- id not found exception treatment
+    - created IdNotFoundException extends RunTimeException
+    - treated exception 
+        - with @ResponseStatus(HttpStatus.NOT_FOUND) on IdNotFoundException
+    - updated ParkingController to throw exception if not found
+        - using Optional.orElseThrow
             
