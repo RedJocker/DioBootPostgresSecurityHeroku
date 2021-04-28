@@ -30,9 +30,9 @@ public class ParkingService {
         return Optional.ofNullable(mockRepository.get(id));
     }
 
-    public Parking create (Parking parkingCreate) {
-        mockRepository.put(parkingCreate.id, parkingCreate);
-        return parkingCreate;
+    public Parking registerParkingCar(Parking parkingCar) {
+        mockRepository.put(parkingCar.id, parkingCar);
+        return parkingCar;
     }
 
 

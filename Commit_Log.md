@@ -144,6 +144,10 @@
     - other classes that depended on Parking getters and setters chanced accordingly
     
 
+- little improvements 3
+    - renamed ParkingService.create to ParkingService.registerCar
+    
+
   
     
         

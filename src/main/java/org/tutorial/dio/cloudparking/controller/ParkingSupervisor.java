@@ -60,7 +60,7 @@ public class ParkingSupervisor {
     @PostMapping
     @ApiOperation("register the incoming of a new car into the parking")
     public ResponseEntity<CarDetailsDto> carEntry(@RequestBody IngressingCarDto incomingCar) {
-        return Optional.of(parkingService.create(incomingCar.toParking()))
+        return Optional.of(parkingService.registerParkingCar(incomingCar.toParking()))
                     .map(registeredCar -> ResponseEntity.status(HttpStatus.CREATED)
                                                     .body(CarDetailsDto.fromParking(registeredCar)))
                     .get();
