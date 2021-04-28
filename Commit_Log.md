@@ -54,4 +54,11 @@
         - dependency implemented by tutor was org.modelmapper modelmapper 2.3.5
     - filtered null values from response
         - @JsonInclude(JsonInclude.Include.NON_NULL)
+
+
+- endpoint findById
+    - GET findById(String id)
+        - ParkingService.findById
+    - minor change on ParkingService.findAll
+        - changed to return stream instead of list
             
