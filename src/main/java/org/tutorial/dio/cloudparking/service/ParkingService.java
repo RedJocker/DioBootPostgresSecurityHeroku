@@ -1,7 +1,7 @@
 package org.tutorial.dio.cloudparking.service;
 
 import org.springframework.stereotype.Service;
-import org.tutorial.dio.cloudparking.controller.dto.ParkingPostRequestDTO;
+import org.tutorial.dio.cloudparking.controller.dto.IngressingCarDto;
 import org.tutorial.dio.cloudparking.model.Parking;
 
 import java.util.HashMap;
@@ -15,8 +15,8 @@ public class ParkingService {
     private final static Map<String, Parking> mockRepository = new HashMap<>();
 
     static {
-        Parking parking1 = new ParkingPostRequestDTO("DMS-1111", "SC", "CELTA", "PRETO").toParking();
-        Parking parking2 = new ParkingPostRequestDTO("WAS-1234", "SP", "VW GOL", "VERMELHO").toParking();
+        Parking parking1 = new IngressingCarDto("DMS-1111", "SC", "CELTA", "PRETO").toParking();
+        Parking parking2 = new IngressingCarDto("WAS-1234", "SP", "VW GOL", "VERMELHO").toParking();
         mockRepository.put(parking1.getId(), parking1);
         mockRepository.put(parking2.getId(), parking2);
     }

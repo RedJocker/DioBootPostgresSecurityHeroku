@@ -5,14 +5,14 @@ import org.tutorial.dio.cloudparking.model.Parking;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-public class ParkingPostRequestDTO {
+public class IngressingCarDto {
 
     public final String license;
     public final String state;
     public final String model;
     public final String color;
 
-    public ParkingPostRequestDTO(String license, String state, String model, String color) {
+    public IngressingCarDto(String license, String state, String model, String color) {
         this.license = license;
         this.state = state;
         this.model = model;

@@ -93,4 +93,27 @@
         - using Optional.orElseThrow
     - application.properties
         - server.error.include-message=always
+    
+- renaming of classes and methods based on "ubiquitous language" concept and creation of DELETE endpoint
+    
+    - DELETE checkout()
+        - use case: car checking out of the parking
+        - returns all the information of the car, including exit time and bill to be paid
+    - CarCheckoutDto
+        - use case: models the information about checking out cars
+            - marks exit time on construction
+            - calculates bill in function of entryDate and exitDate
+                - calculateBill()
+    
+    - renaming
+        - ParkingController -> ParkingSupervisor
+            - use case: used by park supervisors to monitor parked cars
+        - ParkingPostRequestDTO -> IngressingCarDto
+            - use case: models a car coming in and going to be parked
+                - toParking()
+        - ParkingResponseDTO -> CarDetailsDto
+            - use case: models information to be delivered about parked cars
+        
+    
+        
             

@@ -5,9 +5,11 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import org.tutorial.dio.cloudparking.model.Parking;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ParkingResponseDTO {
+public class CarCheckoutDto {
 
     public final String id;
     public final String license;
@@ -18,40 +20,33 @@ public class ParkingResponseDTO {
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm") public final LocalDateTime exitDate;
     public final Double bill;
 
-    public ParkingResponseDTO(String id, String license, String state, String model, String color, LocalDateTime entryDate, LocalDateTime exitDate, Double bill) {
+    private  CarCheckoutDto(String id, String license, String state, String model, String color, LocalDateTime entryDate) {
         this.id = id;
         this.license = license;
         this.state = state;
         this.model = model;
         this.color = color;
         this.entryDate = entryDate;
-        this.exitDate = exitDate;
-        this.bill = bill;
+        this.exitDate = LocalDateTime.now();
+        this.bill = calculateBill();
+
     }
 
-    public static ParkingResponseDTO fromParking(Parking parking) {
-        return new ParkingResponseDTO(
+    private Double calculateBill() {
+        long hours = ChronoUnit.HOURS.between(entryDate, exitDate);
+        return 10.0 * hours;
+    }
+
+
+    public static CarCheckoutDto fromParking(Parking parking) {
+
+        return new CarCheckoutDto(
                 parking.getId(),
                 parking.getLicense(),
                 parking.getState(),
                 parking.getModel(),
                 parking.getColor(),
-                parking.getEntryDate(),
-                parking.getExitDate(),
-                parking.getBill()
-        );
-    }
-
-    public Parking toParking(){
-        return new Parking(
-                id,
-                license,
-                state,
-                model,
-                color,
-                entryDate,
-                exitDate,
-                bill
+                parking.getEntryDate()
         );
     }
 
