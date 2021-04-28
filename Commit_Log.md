@@ -24,6 +24,7 @@
     - CloudParkingApplicationTests
         - webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT
 
+
 - heroku initial configuration
     - created system.properties
         - java.runtime.version=11
@@ -61,4 +62,13 @@
         - ParkingService.findById
     - minor change on ParkingService.findAll
         - changed to return stream instead of list
+  
+  
+- endpoint create
+    - POST create
+        - ParkingService.create
+        - created ParkingPostRequestDTO
+        - renamed ParkingDTO to ParkingResponseDTO
+    - transferred creation logic to ParkingPostRequestDTO
+        - id and entryDate attributed during conversion from ParkingRequestDTO to Parking
             
