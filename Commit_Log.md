@@ -82,6 +82,7 @@
     - updated ParkingController
         - @Api(tags = "Parking Controller")
         - @ApiOperation("end point description")
+    - https://dio-boot-web-postgress-securit.herokuapp.com/swagger-ui.html
     
 
 - id not found exception treatment
@@ -90,4 +91,6 @@
         - with @ResponseStatus(HttpStatus.NOT_FOUND) on IdNotFoundException
     - updated ParkingController to throw exception if not found
         - using Optional.orElseThrow
+    - application.properties
+        - server.error.include-message=always
             
