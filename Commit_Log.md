@@ -94,6 +94,7 @@
     - application.properties
         - server.error.include-message=always
     
+    
 - renaming of classes and methods based on "ubiquitous language" concept and creation of DELETE endpoint
     
     - DELETE checkout()
