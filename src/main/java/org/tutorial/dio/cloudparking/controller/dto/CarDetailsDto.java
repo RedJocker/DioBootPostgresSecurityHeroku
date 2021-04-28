@@ -45,9 +45,7 @@ public class CarDetailsDto {
                 state,
                 model,
                 color,
-                entryDate,
-                null,
-                null
+                entryDate
         );
     }
 

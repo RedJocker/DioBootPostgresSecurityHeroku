@@ -10,8 +10,6 @@ public class Parking {
     private String model;
     private String color;
     private LocalDateTime entryDate;
-    private LocalDateTime exitDate;
-    private Double bill;
 
     public Parking(String id, String license, String state, String model, String color) {
         this.id = id;
@@ -21,15 +19,13 @@ public class Parking {
         this.color = color;
     }
 
-    public Parking(String id, String license, String state, String model, String color, LocalDateTime entryDate, LocalDateTime exitDate, Double bill) {
+    public Parking(String id, String license, String state, String model, String color, LocalDateTime entryDate) {
         this.id = id;
         this.license = license;
         this.state = state;
         this.model = model;
         this.color = color;
         this.entryDate = entryDate;
-        this.exitDate = exitDate;
-        this.bill = bill;
     }
 
     public String getId() {
@@ -78,21 +74,5 @@ public class Parking {
 
     public void setEntryDate(LocalDateTime entryDate) {
         this.entryDate = entryDate;
-    }
-
-    public LocalDateTime getExitDate() {
-        return exitDate;
-    }
-
-    public void setExitDate(LocalDateTime exitDate) {
-        this.exitDate = exitDate;
-    }
-
-    public Double getBill() {
-        return bill;
-    }
-
-    public void setBill(Double bill) {
-        this.bill = bill;
     }
 }

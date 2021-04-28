@@ -60,8 +60,10 @@ public class ParkingSupervisor {
     @PostMapping
     @ApiOperation("register the incoming of a new car into the parking")
     public ResponseEntity<CarDetailsDto> carEntry(@RequestBody IngressingCarDto incomingCar) {
-        final Parking registeredCar = parkingService.create(incomingCar.toParking());
-        return ResponseEntity.status(HttpStatus.CREATED).body(CarDetailsDto.fromParking(registeredCar));
+        return Optional.of(parkingService.create(incomingCar.toParking()))
+                    .map(registeredCar -> ResponseEntity.status(HttpStatus.CREATED)
+                                                    .body(CarDetailsDto.fromParking(registeredCar)))
+                    .get();
     }
     
     @DeleteMapping("/{carId}")

@@ -127,6 +127,17 @@
             - FIXED_VALUE
             - HOURLY_RATE
             - MAX_MINUTES_EXCEPTION
+
+
+- little improvements
+    - removed unnecessary fields on Parking entity
+        - exitDate and bill makes sense only when checking out
+        - dtos that depended on Parking constructor changed accordingly
+    - improved mock data initialization readability on ParkingService
+    - improved POST ParkingService.carEntry readability
+    
+
+  
     
         
     

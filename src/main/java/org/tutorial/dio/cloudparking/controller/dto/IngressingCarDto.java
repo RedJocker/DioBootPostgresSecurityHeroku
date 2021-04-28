@@ -29,9 +29,7 @@ public class IngressingCarDto {
                 state,
                 model,
                 color,
-                now,
-                null,
-                null
+                now
         );
 
     }

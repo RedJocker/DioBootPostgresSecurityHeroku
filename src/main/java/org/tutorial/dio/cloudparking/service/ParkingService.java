@@ -15,10 +15,11 @@ public class ParkingService {
     private final static Map<String, Parking> mockRepository = new HashMap<>();
 
     static {
-        Parking parking1 = new IngressingCarDto("DMS-1111", "SC", "CELTA", "PRETO").toParking();
-        Parking parking2 = new IngressingCarDto("WAS-1234", "SP", "VW GOL", "VERMELHO").toParking();
-        mockRepository.put(parking1.getId(), parking1);
-        mockRepository.put(parking2.getId(), parking2);
+        Stream.of(
+                new IngressingCarDto("DMS-1111", "SC", "CELTA", "PRETO").toParking(),
+                new IngressingCarDto("WAS-1234", "SP", "VW GOL", "VERMELHO").toParking()
+        ).forEach(parkingCar -> mockRepository.put(parkingCar.getId(), parkingCar));
+
     }
 
     public Stream<Parking> findAll() {
