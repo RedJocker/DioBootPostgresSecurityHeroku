@@ -1,5 +1,7 @@
 package org.tutorial.dio.cloudparking.controller;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +19,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
+@Api(tags = "Parking Controller")
 @RequestMapping("/parking")
 public class ParkingController {
 
@@ -28,6 +31,7 @@ public class ParkingController {
     }
 
     @GetMapping
+    @ApiOperation("Find all parkings")
     public ResponseEntity<List<ParkingResponseDTO>> findAll() {
 
         return parkingService.findAll()
@@ -40,6 +44,7 @@ public class ParkingController {
 
 
     @GetMapping("{id}")
+    @ApiOperation("Find parkings by id")
     public ResponseEntity<ParkingResponseDTO> findById(@PathVariable("id") String id) {
 
         return parkingService.findById(id)
@@ -49,6 +54,7 @@ public class ParkingController {
     }
 
     @PostMapping
+    @ApiOperation("Create new parking")
     public ResponseEntity<ParkingResponseDTO> create(@RequestBody ParkingPostRequestDTO creationDto) {
         final Parking created = parkingService.create(creationDto.toParking());
         return ResponseEntity.status(HttpStatus.CREATED).body(ParkingResponseDTO.fromParking(created));

@@ -60,6 +60,7 @@
 - endpoint findById
     - GET findById(String id)
         - ParkingService.findById
+        - https://dio-boot-web-postgress-securit.herokuapp.com/parking/{id}
     - minor change on ParkingService.findAll
         - changed to return stream instead of list
   
@@ -69,6 +70,16 @@
         - ParkingService.create
         - created ParkingPostRequestDTO
         - renamed ParkingDTO to ParkingResponseDTO
+        - https://dio-boot-web-postgress-securit.herokuapp.com/parking
     - transferred creation logic to ParkingPostRequestDTO
         - id and entryDate attributed during conversion from ParkingRequestDTO to Parking
+    
+
+- inclusion of swagger
+    - SwaggerConfig
+    - updated HelloController
+        - @ApiIgnore
+    - updated ParkingController
+        - @Api(tags = "Parking Controller")
+        - @ApiOperation("end point description")
             
