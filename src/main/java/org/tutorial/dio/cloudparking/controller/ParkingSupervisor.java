@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.tutorial.dio.cloudparking.controller.dto.CarCheckoutDto;
 import org.tutorial.dio.cloudparking.controller.dto.CarDetailsDto;
+import org.tutorial.dio.cloudparking.controller.dto.IngressingCarDto;
 import org.tutorial.dio.cloudparking.exception.CarIdNotFoundException;
 import org.tutorial.dio.cloudparking.model.Parking;
 import org.tutorial.dio.cloudparking.service.ParkingService;
@@ -46,7 +47,7 @@ public class ParkingSupervisor {
     }
 
 
-    @GetMapping("{carId}")
+    @GetMapping("/{carId}")
     @ApiOperation("Find parked cars by carId")
     public ResponseEntity<CarDetailsDto> findCarById(@PathVariable("carId") String carId) {
 
@@ -58,13 +59,13 @@ public class ParkingSupervisor {
 
     @PostMapping
     @ApiOperation("register the incoming of a new car into the parking")
-    public ResponseEntity<CarDetailsDto> carEntry(@RequestBody CarDetailsDto incomingCar) {
+    public ResponseEntity<CarDetailsDto> carEntry(@RequestBody IngressingCarDto incomingCar) {
         final Parking registeredCar = parkingService.create(incomingCar.toParking());
         return ResponseEntity.status(HttpStatus.CREATED).body(CarDetailsDto.fromParking(registeredCar));
     }
     
-    @DeleteMapping
-    @ApiOperation("bill a car checking out")
+    @DeleteMapping("/{carId}")
+    @ApiOperation("bill a car checking out of the parking")
     public ResponseEntity<CarCheckoutDto> carCheckout(@PathVariable("carId") String carId) {
 
 

@@ -11,6 +11,10 @@ import java.time.temporal.ChronoUnit;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CarCheckoutDto {
 
+    private static final double FIXED_VALUE = 10.0;
+    private static final double HOURLY_RATE = 10.0;
+    private static final int MAX_MINUTES_EXCEPTION = 0;
+
     public final String id;
     public final String license;
     public final String state;
@@ -33,8 +37,12 @@ public class CarCheckoutDto {
     }
 
     private Double calculateBill() {
+        long minutes = ChronoUnit.MINUTES.between(entryDate, exitDate);
+        if(minutes < MAX_MINUTES_EXCEPTION) {
+            return 0.0;
+        }
         long hours = ChronoUnit.HOURS.between(entryDate, exitDate);
-        return 10.0 * hours;
+        return FIXED_VALUE + HOURLY_RATE * hours;
     }
 
 

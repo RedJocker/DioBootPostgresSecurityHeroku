@@ -15,18 +15,16 @@ public class CarDetailsDto {
     public final String model;
     public final String color;
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm") public final LocalDateTime entryDate;
-    @JsonFormat(pattern = "dd/MM/yyyy HH:mm") public final LocalDateTime exitDate;
-    public final Double bill;
 
-    public CarDetailsDto(String id, String license, String state, String model, String color, LocalDateTime entryDate, LocalDateTime exitDate, Double bill) {
+
+    public CarDetailsDto(String id, String license, String state, String model, String color, LocalDateTime entryDate) {
         this.id = id;
         this.license = license;
         this.state = state;
         this.model = model;
         this.color = color;
         this.entryDate = entryDate;
-        this.exitDate = exitDate;
-        this.bill = bill;
+
     }
 
     public static CarDetailsDto fromParking(Parking parking) {
@@ -36,9 +34,7 @@ public class CarDetailsDto {
                 parking.getState(),
                 parking.getModel(),
                 parking.getColor(),
-                parking.getEntryDate(),
-                parking.getExitDate(),
-                parking.getBill()
+                parking.getEntryDate()
         );
     }
 
@@ -50,8 +46,8 @@ public class CarDetailsDto {
                 model,
                 color,
                 entryDate,
-                exitDate,
-                bill
+                null,
+                null
         );
     }
 

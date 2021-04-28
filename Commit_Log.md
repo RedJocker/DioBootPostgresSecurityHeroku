@@ -113,6 +113,20 @@
                 - toParking()
         - ParkingResponseDTO -> CarDetailsDto
             - use case: models information to be delivered about parked cars
+
+
+- --fix ParkingSupervisor, improved logic for billing
+    - didn't test before committing :(
+        - don't do it
+    - fixed ParkingSupervisor DELETE endpoint
+    - fixed incorrect paths
+    - excluded unnecessary fields on CarDetailsDto
+    - improved logic for billing
+        - static final variables
+            - FIXED_VALUE
+            - HOURLY_RATE
+            - MAX_MINUTES_EXCEPTION
+    
         
     
         
