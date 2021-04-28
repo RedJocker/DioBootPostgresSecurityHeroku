@@ -148,6 +148,14 @@
     - renamed ParkingService.create to ParkingService.registerCar
     
 
+- created PUT updateCarInfo
+    - use case: fix incorrect registration info
+        - entryTime not updatable
+    - created FixCarInfoDto
+    - created CarInfoInconsistencyPreventionException
+    - created ParkingService.updateInfo()
+    
+
   
     
         

@@ -8,11 +8,13 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.tutorial.dio.cloudparking.controller.dto.CarCheckoutDto;
 import org.tutorial.dio.cloudparking.controller.dto.CarDetailsDto;
+import org.tutorial.dio.cloudparking.controller.dto.FixCarInfoDto;
 import org.tutorial.dio.cloudparking.controller.dto.IngressingCarDto;
 import org.tutorial.dio.cloudparking.exception.CarIdNotFoundException;
 import org.tutorial.dio.cloudparking.model.Parking;
@@ -26,7 +28,6 @@ import java.util.stream.Collectors;
 @Api(tags = "PARKING SUPERVISOR, the best controller for your parking business")
 @RequestMapping("/parking")
 public class ParkingSupervisor {
-
 
     private final ParkingService parkingService;
 
@@ -78,6 +79,19 @@ public class ParkingSupervisor {
                 .map(CarCheckoutDto::fromParking)
                 .map(ResponseEntity::ok)
                 .orElseThrow(() -> new CarIdNotFoundException(carId));
+    }
+
+    @PutMapping("/{carId}")
+    @ApiOperation("update incorrect car info")
+    public ResponseEntity<CarDetailsDto> updateCarInfo(@PathVariable("carId") String carId,
+                                                       @RequestBody FixCarInfoDto infoDto) {
+
+        return parkingService.updateInfo(carId, infoDto)
+                .map(CarDetailsDto::fromParking)
+                .map(ResponseEntity::ok)
+                .orElseThrow(() -> new CarIdNotFoundException(carId));
+
+
     }
 
 

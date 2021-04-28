@@ -1,6 +1,7 @@
 package org.tutorial.dio.cloudparking.service;
 
 import org.springframework.stereotype.Service;
+import org.tutorial.dio.cloudparking.controller.dto.FixCarInfoDto;
 import org.tutorial.dio.cloudparking.controller.dto.IngressingCarDto;
 import org.tutorial.dio.cloudparking.model.Parking;
 
@@ -40,5 +41,15 @@ public class ParkingService {
         final Optional<Parking> maybeCarFound = findById(carId);
         maybeCarFound.ifPresent(car -> mockRepository.remove(carId));
         return maybeCarFound;
+    }
+
+    public Optional<Parking> updateInfo(String carId, FixCarInfoDto infoDto) {
+        final Optional<Parking> parkingUpdated = findById(carId)
+                    .map(foundCar -> infoDto.updateInfo(foundCar, carId));
+
+        parkingUpdated.ifPresent( updated -> mockRepository.replace(carId, updated));
+
+        return parkingUpdated;
+
     }
 }
