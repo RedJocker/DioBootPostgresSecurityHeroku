@@ -49,12 +49,12 @@ public class CarCheckoutDto {
     public static CarCheckoutDto fromParking(Parking parking) {
 
         return new CarCheckoutDto(
-                parking.getId(),
-                parking.getLicense(),
-                parking.getState(),
-                parking.getModel(),
-                parking.getColor(),
-                parking.getEntryDate()
+                parking.id,
+                parking.license,
+                parking.state,
+                parking.model,
+                parking.color,
+                parking.entryDate
         );
     }
 

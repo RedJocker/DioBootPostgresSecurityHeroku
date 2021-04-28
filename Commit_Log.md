@@ -137,6 +137,13 @@
     - improved POST ParkingService.carEntry readability
     
 
+- little improvements 2
+    - changed entity field from private to public final
+        - if the field is final I don't have to worry with encapsulation
+            - set and get method not needed anymore
+    - other classes that depended on Parking getters and setters chanced accordingly
+    
+
   
     
         

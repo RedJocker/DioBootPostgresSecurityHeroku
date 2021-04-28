@@ -4,20 +4,12 @@ import java.time.LocalDateTime;
 
 public class Parking {
 
-    private String id;
-    private String license;
-    private String state;
-    private String model;
-    private String color;
-    private LocalDateTime entryDate;
-
-    public Parking(String id, String license, String state, String model, String color) {
-        this.id = id;
-        this.license = license;
-        this.state = state;
-        this.model = model;
-        this.color = color;
-    }
+    public final String id;
+    public final String license;
+    public final String state;
+    public final String model;
+    public final String color;
+    public final LocalDateTime entryDate;
 
     public Parking(String id, String license, String state, String model, String color, LocalDateTime entryDate) {
         this.id = id;
@@ -25,54 +17,6 @@ public class Parking {
         this.state = state;
         this.model = model;
         this.color = color;
-        this.entryDate = entryDate;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getLicense() {
-        return license;
-    }
-
-    public void setLicense(String license) {
-        this.license = license;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    public LocalDateTime getEntryDate() {
-        return entryDate;
-    }
-
-    public void setEntryDate(LocalDateTime entryDate) {
         this.entryDate = entryDate;
     }
 }

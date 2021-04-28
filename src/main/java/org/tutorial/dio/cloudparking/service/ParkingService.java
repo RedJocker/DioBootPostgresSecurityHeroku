@@ -18,7 +18,7 @@ public class ParkingService {
         Stream.of(
                 new IngressingCarDto("DMS-1111", "SC", "CELTA", "PRETO").toParking(),
                 new IngressingCarDto("WAS-1234", "SP", "VW GOL", "VERMELHO").toParking()
-        ).forEach(parkingCar -> mockRepository.put(parkingCar.getId(), parkingCar));
+        ).forEach(parkingCar -> mockRepository.put(parkingCar.id, parkingCar));
 
     }
 
@@ -31,7 +31,7 @@ public class ParkingService {
     }
 
     public Parking create (Parking parkingCreate) {
-        mockRepository.put(parkingCreate.getId(), parkingCreate);
+        mockRepository.put(parkingCreate.id, parkingCreate);
         return parkingCreate;
     }
 
