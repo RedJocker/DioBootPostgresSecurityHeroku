@@ -30,6 +30,8 @@ class ParkingSupervisorIntegrationTest {
     @Test
     void listAllCars_whenGetThenStatusOK() {
         RestAssured.given()
+                .auth()
+                .basic("user", "dio@12345")
                 .when()
                 .get(BASE_URI)
                 .then()
@@ -51,15 +53,21 @@ class ParkingSupervisorIntegrationTest {
         );
 
         RestAssured.given()
-                .when()
+                .auth()
+                .preemptive()
+                .basic("user", "dio@12345")
                 .body(ingressingCarDto)
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .when()
                 .post(BASE_URI)
                 .then()
                 .statusCode(HttpStatus.CREATED.value());
 
 
     }
+
+
+
 
 
 }

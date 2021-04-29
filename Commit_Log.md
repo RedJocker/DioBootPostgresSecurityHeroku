@@ -196,6 +196,18 @@
     - spring-boot-starter-security
     - spring-security-test
     
+
+- security config 
+    - tests failing due to lack oh auth
+        - were able to correct GET but POST is still failing, not sure why
+    - created SecurityConfig extends WebSecurityConfigurerAdapter
+        - @Override configure(AuthenticationManagerBuilder auth)
+        - @Override protected void configure(HttpSecurity http)
+    - updated SwaggerConfig
+    - POST method not working
+    - added http.csrf().disable() on configure(AuthenticationManagerBuilder
+    - POST working
+    
         
     
 
