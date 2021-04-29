@@ -14,7 +14,8 @@ Foi também utilizado o conceito de linguagem ubiqua do Design Dirigido pelo Dom
 
 
 O aplicativo pode ser encontrado neste link:
-  - https://dio-boot-web-postgress-securit.herokuapp.com/swagger-ui.html#/PARKING%20SUPERVISOR,%20the%20best%20controller%20for%20your%20parking%20business/carCheckoutUsingDELETE
+  - https://dio-boot-web-postgress-securit.herokuapp.com/swagger-ui.html#/
   - login
     - usuario: user
     - senha: dio@12345
+  - o acesso inicial pode demorar um minutinho pois o heroku põe o aplicativo para dormir já que está no modo gratuito
