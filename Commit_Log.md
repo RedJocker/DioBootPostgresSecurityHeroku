@@ -163,6 +163,16 @@
         - carEntry_whenValidBodyThenStatusCreated()
     
 
+- adding postgres
+    - dependency included
+        - spring-boot-starter-data-jpa
+        - postgresql
+    - included properties for connection on application.properties
+    - written docker-compose.yml to run local db on a container
+    - docker compose up
+    - application connects successfully
+    
+
 
       
     
