@@ -4,7 +4,9 @@ import org.springframework.stereotype.Service;
 import org.tutorial.dio.cloudparking.controller.dto.FixCarInfoDto;
 import org.tutorial.dio.cloudparking.controller.dto.IngressingCarDto;
 import org.tutorial.dio.cloudparking.model.Parking;
+import org.tutorial.dio.cloudparking.repository.ParkingRepository;
 
+import javax.annotation.PostConstruct;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -14,42 +16,48 @@ import java.util.stream.Stream;
 public class ParkingService {
 
     private final static Map<String, Parking> mockRepository = new HashMap<>();
+    private final ParkingRepository parkingRepository;
 
-    static {
+    public ParkingService(ParkingRepository parkingRepository) {
+        this.parkingRepository = parkingRepository;
+    }
+
+    @PostConstruct
+    public void setUpMockData() {
+
         Stream.of(
                 new IngressingCarDto("DMS-1111", "SC", "CELTA", "PRETO").toParking(),
                 new IngressingCarDto("WAS-1234", "SP", "VW GOL", "VERMELHO").toParking()
-        ).forEach(parkingCar -> mockRepository.put(parkingCar.id, parkingCar));
-
+        ).forEach(parkingRepository::save);
     }
 
+
     public Stream<Parking> findAll() {
-        return mockRepository.values().stream();
+        return parkingRepository.findAll().stream();
     }
 
     public Optional<Parking> findById(String id) {
-        return Optional.ofNullable(mockRepository.get(id));
+        return parkingRepository.findById(id);
     }
 
     public Parking registerParkingCar(Parking parkingCar) {
-        mockRepository.put(parkingCar.id, parkingCar);
-        return parkingCar;
+        return parkingRepository.save(parkingCar);
     }
 
 
     public Optional<Parking> checkoutCarById(String carId) {
         final Optional<Parking> maybeCarFound = findById(carId);
-        maybeCarFound.ifPresent(car -> mockRepository.remove(carId));
+        maybeCarFound.ifPresent(parkingRepository::delete);
         return maybeCarFound;
     }
 
     public Optional<Parking> updateInfo(String carId, FixCarInfoDto infoDto) {
-        final Optional<Parking> parkingUpdated = findById(carId)
+        final Optional<Parking> maybeParkingUpdated = findById(carId)
                     .map(foundCar -> infoDto.updateInfo(foundCar, carId));
 
-        parkingUpdated.ifPresent( updated -> mockRepository.replace(carId, updated));
+        maybeParkingUpdated.ifPresent(parkingRepository::save);
 
-        return parkingUpdated;
+        return maybeParkingUpdated;
 
     }
 }

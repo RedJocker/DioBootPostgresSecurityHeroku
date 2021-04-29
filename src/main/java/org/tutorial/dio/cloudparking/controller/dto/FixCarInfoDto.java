@@ -20,16 +20,16 @@ public class FixCarInfoDto {
     }
 
     public Parking updateInfo(Parking parkedCar, String carId){
-        if(!carId.equals(parkedCar.id)) {
-            throw new CarInfoInconsistencyPreventionException(carId, parkedCar.id);
+        if(!carId.equals(parkedCar.getId())) {
+            throw new CarInfoInconsistencyPreventionException(carId, parkedCar.getId());
         }
         return new Parking(
                 carId,
-                license != null ? license : parkedCar.license,
-                state != null ? state : parkedCar.state,
-                model != null ? model : parkedCar.model,
-                color != null ? color : parkedCar.color,
-                parkedCar.entryDate
+                license != null ? license : parkedCar.getLicense(),
+                state != null ? state : parkedCar.getState(),
+                model != null ? model : parkedCar.getModel(),
+                color != null ? color : parkedCar.getColor(),
+                parkedCar.getEntryDate()
         );
     }
 }

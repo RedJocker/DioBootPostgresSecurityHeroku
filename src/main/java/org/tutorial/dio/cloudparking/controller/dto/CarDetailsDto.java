@@ -29,12 +29,12 @@ public class CarDetailsDto {
 
     public static CarDetailsDto fromParking(Parking parking) {
         return new CarDetailsDto(
-                parking.id,
-                parking.license,
-                parking.state,
-                parking.model,
-                parking.color,
-                parking.entryDate
+                parking.getId(),
+                parking.getLicense(),
+                parking.getState(),
+                parking.getModel(),
+                parking.getColor(),
+                parking.getEntryDate()
         );
     }
 

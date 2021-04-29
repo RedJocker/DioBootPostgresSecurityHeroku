@@ -173,6 +173,25 @@
     - application connects successfully
     
 
+- persisting data with postgres
+    - inclusions on application.properties
+        - spring.jpa.show-sql=true
+        - spring.jpa.hibernate.dll-auto=create-drop
+    - updates on entity Parking
+        - @Entity
+        - Jpa needs defaultConstructor
+        - Jpa needs non final fields
+            - Dtos had to be updated to use getters
+    - created interface ParkingRepository
+        - extends JpaRepository
+    - updated ParkingService
+        - substituted mockData hash map for repository
+        - updated methods to use repository
+    - seems to be working ok
+     
+        
+    
+
 
       
     
