@@ -188,7 +188,14 @@
         - substituted mockData hash map for repository
         - updated methods to use repository
     - seems to be working ok
+    - heroku database addon installed
      
+
+
+- security dependency added
+    - spring-boot-starter-security
+    - spring-security-test
+    
         
     
 
