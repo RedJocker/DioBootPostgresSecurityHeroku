@@ -141,7 +141,7 @@
     - changed entity field from private to public final
         - if the field is final I don't have to worry with encapsulation
             - set and get method not needed anymore
-    - other classes that depended on Parking getters and setters chanced accordingly
+    - other classes that depended on Parking getters and setters changed accordingly
     
 
 - little improvements 3
@@ -154,6 +154,17 @@
     - created FixCarInfoDto
     - created CarInfoInconsistencyPreventionException
     - created ParkingService.updateInfo()
+    
+
+- a little bit of testing
+    - inclusion of dependency restAssured
+    - creation of ParkingSupervisorIntegrationTest
+        - listAllCars_whenGetThenStatusOK()
+        - carEntry_whenValidBodyThenStatusCreated()
+    
+
+
+      
     
 
   
